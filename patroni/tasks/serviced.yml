@@ -1,0 +1,8 @@
+---
+# handlers file for patroni
+# перезапуск patroni
+- name: restarted patroni
+  service:
+     state: restarted
+     daemon_reload: yes
+     name: patroni

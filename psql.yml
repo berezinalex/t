@@ -1,0 +1,6 @@
+---
+# Установка и настройка сервера БД postgresql-11
+- hosts: all
+  become: true
+  roles:
+     - psql

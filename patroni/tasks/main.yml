@@ -1,0 +1,10 @@
+---
+# tasks file for patroni
+# запуск задач по очереди в порядке сверху вниз
+- include_tasks: install.yml
+- include_tasks: configure_beta.yml
+#  when: ansible_facts['ansible_hostname']=="beta"
+- include_tasks: configure_gamma.yml
+#  when: ansible_facts['ansible_hostname']=="gamma"
+#- include_tasks: configure_pgpass.yml
+- include_tasks: serviced.yml

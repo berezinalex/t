@@ -1,0 +1,23 @@
+---
+# tasks file for EtcdHaproxyServer
+
+# копируем фаил настроек для нашего кластера из папки files роли на сервер 
+# куда устанавливаем etcd
+
+- name: copy "etcd config file"
+  copy:
+    src: etcd
+    dest: /etc/default
+
+# Создаем директорию для хранения ключей по нашему кластеру
+- name: create dcs directory "cluster key storage"
+  file:
+    path: /data/etcd
+    state: directory
+    owner: etcd
+    group: etcd
+# копируем конфигурационный файил для haproxy 
+- name: copy "haproxy config file"
+  copy:
+    src: haproxy.cfg
+    dest: /etc/haproxy/

@@ -1,0 +1,5 @@
+---
+# handlers file for EtcdHaproxyServer
+# копируем фаил сервиса для последующей активацииавтозапуска после перезагрузки
+- name: cp config etcd to systemd
+  raw: cp /lib/systemd/system/etcd.service /etc/systemd/system/

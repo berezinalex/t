@@ -1,0 +1,12 @@
+---
+# tasks file for EtcdHaproxyServer
+# устанавливаем etcd
+- name: install etcd
+  apt:
+    name: etcd
+    update_cache: yes
+# утанавливаем haproxy
+- name: install haproxy
+  apt:
+    name: haproxy
+    update_cache: yes

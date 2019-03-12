@@ -1,0 +1,25 @@
+---
+# tasks file for dcs
+# данный фаил запускает в порядке очереди задачи описанные ниже 
+# чем выше в списке задача тем выше приоритет исполнения
+
+# задача по изменеию locale  ansible шлёт предупрежения на выполнения
+# комманд из shell что локаль ru не соответствует en - той от которой 
+# запускаются playbook
+
+- include_tasks: locale.yml
+
+# задача по установки etcd и haproxy
+
+- include_tasks: install.yml
+
+# настройка haproxy и etcd
+
+- include_tasks: configure.yml
+
+# настройка автозапуска etcd после перезагрузки
+- include_tasks: raw.yml
+
+# перезапуск сервера etcd с новыми изменёными параметрами
+
+- include_tasks: serviced.yml

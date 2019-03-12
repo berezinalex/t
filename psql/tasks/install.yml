@@ -1,0 +1,7 @@
+---
+#install psql 11
+# Установка psql-11 db server
+- name: Install PostgreSQL 11
+  apt:
+    name: postgresql-11
+    update_cache: yes

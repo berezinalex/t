@@ -1,0 +1,6 @@
+---
+# Запуск роли по исполнению и настройке сервера patroni
+- hosts: all
+  become: true
+  roles:
+     - patroni

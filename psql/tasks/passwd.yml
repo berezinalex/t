@@ -1,0 +1,10 @@
+---
+#Установка пароля для пользователя postgres 
+# от имени которого будут стартовать сервисы 
+# пароль длжен бытьв hash виде
+# для генерации запустите  "openssl passwd -1 -salt 3Zdze7Vx вашпарольтут"
+- name: chande password postgres
+  user:
+    name: postgres
+    password: "$1$3Zdze7Vx$MebpmEc9NzNCpkjiEfK.6."
+    update_password: always

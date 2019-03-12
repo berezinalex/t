@@ -1,0 +1,13 @@
+---
+- name: chande password psql
+  hosts: all
+  become: True
+  become_user: postgres
+  tasks:
+  - postgresql_user:
+     db: "postgres"
+     name: "postgres"
+     password: "zalando"
+     priv: ALL
+     encrypted: yes
+

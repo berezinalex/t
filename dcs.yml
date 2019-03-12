@@ -1,0 +1,6 @@
+---
+# запуск роли по установки и настроики dsc 
+- hosts: all
+  become: true
+  roles:
+     - dcs

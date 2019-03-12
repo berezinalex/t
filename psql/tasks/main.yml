@@ -1,0 +1,7 @@
+---
+# tasks file for psql
+# пошаговыый запуск задач для psql-11
+- include_tasks: configure_apt.yml
+- include_tasks: install.yml
+#- include_tasks: serviced.yml
+- include_tasks: passwd.yml

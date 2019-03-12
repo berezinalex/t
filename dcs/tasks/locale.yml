@@ -1,0 +1,10 @@
+---
+# handlers file for EtcdHaproxyServer
+# Генерируем locale на en для того чтобы ибегать 
+# предупреждения ansible oб ошибке и не выполненю команд в shell
+# Это необходимо сделатьесли  локали AWX отличается от локали где выполняется playbook
+# 
+- name: configure locale
+  locale_gen:
+    name: en_US.UTF-8
+    state: present
