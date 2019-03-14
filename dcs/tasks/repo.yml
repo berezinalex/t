@@ -1,0 +1,7 @@
+---
+# handlers file for EtcdHaproxyServer
+# копируем фаил сервиса для последующей активацииавтозапуска после перезагрузки
+- name: config repo
+  apt_repository:
+    repo: deb http://archive.ubuntu.com/ubuntu bionic main universe
+    state: present
