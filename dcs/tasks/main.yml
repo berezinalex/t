@@ -7,21 +7,21 @@
 # комманд из shell что локаль ru не соответствует en - той от которой 
 # запускаются playbook
 
-- include_tasks: repo.yml
+#- include_tasks: repo.yml
 
 ##- include_tasks: locale.yml
 
 # задача по установки etcd и haproxy
 
-##- include_tasks: install.yml
+- include_tasks: install.yml
 
 # настройка haproxy и etcd
 
-##- include_tasks: configure.yml
+- include_tasks: configure.yml
 
 # настройка автозапуска etcd после перезагрузки
-##- include_tasks: raw.yml
+- include_tasks: raw.yml
 
 # перезапуск сервера etcd с новыми изменёными параметрами
 
-##- include_tasks: serviced.yml
+- include_tasks: serviced.yml
