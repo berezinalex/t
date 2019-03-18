@@ -1,12 +1,6 @@
 ---
 # handlers file for EtcdHaproxyServer
 # перезапскаем сервис  etcd и мтавим ему возможность автозапуска
-- name: restart etcd
-  service:
-     state: restarted
-     daemon_reload: yes
-     name: etcd
-     enabled: yes
 - name: restart haproxy
   service:
      state: restarted

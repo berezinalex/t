@@ -24,4 +24,5 @@
 
 # перезапуск сервера etcd с новыми изменёными параметрами
 
-- include_tasks: serviced.yml
+- include_tasks: serviced_ha.yml
+- include_tasks: serviced_etcd.yml
