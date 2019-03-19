@@ -31,8 +31,8 @@ bootstrap:
     loop_wait: 10
     retry_timeout: 10
     maximum_lag_on_failover: 1048576
-#    master_start_timeout: 300
-    synchronous_mode: true
+    master_start_timeout: 300
+#    synchronous_mode: true
 #    standby_cluster:
 #      host: 127.0.0.1
 #      port: 1111
