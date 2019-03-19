@@ -3,6 +3,6 @@
 # перезапуск сервиса postgresql
 - name: stopped psql
   service:
-     state: stopped
-     daemon_reload: yes
      name: postgresql
+     state: stopped
+     enabled: no
