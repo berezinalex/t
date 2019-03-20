@@ -8,7 +8,6 @@
      name: patroni
 # копируем конфигурационный фаил для patroni.service
 - name: copy "patroni.service file"
-- name: Configure Patroni
   copy:
     src: ./files/service/patroni.service
     dest: /lib/systemd/system/patroni.service
