@@ -1,11 +1,7 @@
-# systemd service template for patroni instances. The actual instances will
-# be called "patroni@version-cluster", e.g. "patroni@10-main". The
-# variable %i expands to "version-cluster", %I expands to "version/cluster".
-# (%I breaks for cluster names containing dashes.)
 [Unit]
-Description=Patroni instance %i
+Description=Runners to orchestrate a high-availability PostgreSQL
 After=network.target
-ConditionPathExists=/etc/patroni/%i.yml
+ConditionPathExists=/etc/patroni/config.yml
 
 [Service]
 Type=simple
@@ -14,14 +10,19 @@ User=postgres
 Group=postgres
 
 # Read in configuration file if it exists, otherwise proceed
-EnvironmentFile=-/etc/patroni/env.conf
+EnvironmentFile=-/etc/patroni_env.conf
 
-PermissionsStartOnly=True
+RuntimeDirectory=postgresql/11-ExoTanks.pg_stat_tmp
+
 WorkingDirectory=~
-RuntimeDirectory=postgresql/%i.pg_stat_tmp
-RuntimeDirectoryMode=2775
 
-ExecStart=/usr/bin/patroni /etc/patroni/%i.yml
+# Pre-commands to start watchdog device
+# Uncomment if watchdog is part of your patroni setup
+#ExecStartPre=-/usr/bin/sudo /sbin/modprobe softdog
+#ExecStartPre=-/usr/bin/sudo /bin/chown postgres /dev/watchdog
+
+# Start the patroni process
+ExecStart=/usr/bin/patroni /etc/patroni/config.yml
 
 # Send HUP to reload from patroni.yml
 ExecReload=/bin/kill -s HUP $MAINPID
@@ -34,9 +35,6 @@ TimeoutSec=30
 
 # Do not restart the service if it crashes, we want to manually inspect database on failure
 Restart=no
-
-# Uncomment in order to get debugging output
-#Environment=PATRONI_LOGLEVEL=DEBUG
 
 [Install]
 WantedBy=multi-user.target
